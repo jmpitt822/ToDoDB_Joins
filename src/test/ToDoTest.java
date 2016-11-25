@@ -58,11 +58,6 @@ public class ToDoTest {
         ToDo.insertToDo(conn, jimbo.id, "To do: make this test work.");
         ToDoItem testDo = ToDo.selectToDo(conn, 1);
         ArrayList<ToDoItem> items = new ArrayList<>();
-//        items.add(testDo);
-//        ToDo.deleteToDo(conn, testDo.id);
-//        ToDoItem testDo1 = ToDo.selectToDo(conn, 1);
-////        items.add(testDo);
-//        assertTrue(items.isEmpty());
         assertTrue(testDo.text.contains(""));
     }
 

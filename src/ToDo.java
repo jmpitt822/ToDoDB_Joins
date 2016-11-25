@@ -93,34 +93,41 @@ public class ToDo {
 
             String option = scanner.nextLine();
 
-            if (option.equals("1")) {
-                System.out.println("Enter your to-do item:");
-                String text = scanner.nextLine();
+            switch (option) {
+                case "1":
+                    System.out.println("Enter your to-do item:");
+                    String text = scanner.nextLine();
 
-                insertToDo(conn, user.id,text);
-            } else if (option.equals("2")) {
-                System.out.println("Enter the number of the item you want to toggle:");
-                int itemNum = Integer.valueOf(scanner.nextLine());
+                    insertToDo(conn, user.id, text);
+                    break;
+                case "2": {
+                    System.out.println("Enter the number of the item you want to toggle:");
+                    int itemNum = Integer.valueOf(scanner.nextLine());
 
-                toggleToDo(conn, itemNum);
-            } else if (option.equals("3")) {
-
-                ArrayList<ToDoItem> items = selectToDos(conn);
-                for (ToDoItem item : items) {
-                    String checkbox = "[ ] ";
-                    if (item.isDone) {
-                        checkbox = "[x] ";
-                    }
-                    System.out.println(checkbox + item.id + ". " + item.text);
-
+                    toggleToDo(conn, itemNum);
+                    break;
                 }
-            } else if (option.equals("4")){
-                System.out.println("Enter the number of the item you want to delete.");
-                int itemNum = Integer.valueOf(scanner.nextLine());
-                deleteToDo(conn, itemNum);
-            }
-            else {
-                System.out.println("Invalid option");
+                case "3":
+
+                    ArrayList<ToDoItem> items = selectToDos(conn);
+                    for (ToDoItem item : items) {
+                        String checkbox = "[ ] ";
+                        if (item.isDone) {
+                            checkbox = "[x] ";
+                        }
+                        System.out.println(checkbox + item.id + ". " + item.text);
+
+                    }
+                    break;
+                case "4": {
+                    System.out.println("Enter the number of the item you want to delete.");
+                    int itemNum = Integer.valueOf(scanner.nextLine());
+                    deleteToDo(conn, itemNum);
+                    break;
+                }
+                default:
+                    System.out.println("Invalid option");
+                    break;
             }
         }
     }
